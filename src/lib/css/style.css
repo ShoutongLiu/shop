@@ -1,0 +1,19 @@
+@charset "utf-8";
+body, ul, dl, dd, dt, ol, li, p, h1, h2, h3, h4, h5, h6, textarea, form, select, fieldset, table, td, div, input {margin:0;padding:0;-webkit-text-size-adjust: none}
+h1, h2, h3, h4, h5, h6{font-size:12px;font-weight:normal}
+body>div{margin:0 auto}
+div {text-align:left}
+a img {border:0}
+body { color: #333; text-align: center; font: 12px "微软雅黑"; background-color: #2B2B2B; }
+ul, ol, li {list-style-type:none;vertical-align:0}
+
+.menu{height:48px;display:block;padding:0px;width:999px;margin:0px auto 0 auto;}
+.menu ul{list-style:none;padding:0;margin:0;}
+.menu ul li{float:left;overflow:hidden;position:relative;line-height:48px;text-align:center;}
+.menu ul li a{position:relative;display:block;width:111px;height:48px;font-family:"微软雅黑", "宋体";font-size:14px;text-decoration:none;cursor:pointer;font-weight:bold;line-height:48px;}
+.menu ul li a span{position:absolute;left:0;width:111px;}
+.menu ul li a span.out{top:0px;}
+.menu ul li a span.over,  .menu ul li a span.bg{top:-48px;}
+#menu2{background-image:url(../images/s_03.jpg);background-repeat:repeat;}
+#menu2 ul li a{color:#FFFFFF;}
+#menu2 ul li a span.over{color:#FFF;height:48px;width:111px;background-image:url(../images/w_03.jpg);background-repeat:repeat;}
