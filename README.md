@@ -1,6 +1,6 @@
-# szhmbbb
+# 在线购物商城
 
-## Project setup
+## 安装步骤
 ```
 npm install
 ```
