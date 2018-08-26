@@ -6,7 +6,7 @@
             <div class="head-top">
                 <div class="section">
                     <div class="left-box">
-                        <span>黑马买买买</span>
+                        <span>在线购物商城</span>
                         <a target="_blank" href="#"></a>
                         <a target="_blank" href="#"></a>
                     </div>
@@ -54,7 +54,7 @@
                             </li>
                             <li class="video">
                                 <a href="#" class="">
-                                    <span class="out" style="top: 0px;">黑马超市</span>
+                                    <span class="out" style="top: 0px;">生鲜超市</span>
                                 </a>
                             </li>
                             <li class="down">
@@ -102,9 +102,9 @@
                 </div>
                 <div class="foot-box">
                     <div class="copyright">
-                        <p>版权所有 黑马买买买 </p>
+                        <p>版权所有 在线商城 </p>
                         <p>公司地址： 联系电话：</p>
-                        <p class="gray">Copyright © 2009-2018 itcast Corporation,All Rights Reserved.</p>
+                        <p class="gray">Copyright © 2016-2018 myshop Corporation,All Rights Reserved.</p>
                     </div>
                     <div class="service">
                         <p>周一至周日 9:00-24:00</p>
