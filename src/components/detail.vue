@@ -40,21 +40,7 @@
                                         <dt>购买数量</dt>
                                         <dd>
                                             <div class="stock-box">
-                                                <div class="el-input-number el-input-number--small">
-                                                    <span role="button" class="el-input-number__decrease is-disabled">
-                                                        <i class="el-icon-minus"></i>
-                                                    </span>
-                                                    <span role="button" class="el-input-number__increase">
-                                                        <i class="el-icon-plus"></i>
-                                                    </span>
-                                                    <div class="el-input el-input--small">
-                                                        <!---->
-                                                        <input autocomplete="off" size="small" type="text" rows="2" max="60" min="1" validateevent="true" class="el-input__inner" role="spinbutton" aria-valuemax="60" aria-valuemin="1" aria-valuenow="1" aria-disabled="false">
-                                                        <!---->
-                                                        <!---->
-                                                        <!---->
-                                                    </div>
-                                                </div>
+                                                <el-input-number v-model="buyCount" @change="handleChange" :min="0" :max="goodsInfo.stock_quantity" label="描述文字" size="small"></el-input-number>
                                             </div>
                                             <span class="stock-txt">
                                                 库存
@@ -74,20 +60,22 @@
                             </div>
                         </div>
                         <div id="goodsTabs" class="goods-tab bg-wrap">
+                        	<Affix>
                             <div id="tabHead" class="tab-head" style="position: static; top: 517px; width: 925px;">
                                 <ul>
                                     <li>
-                                        <a href="javascript:;" class="selected">商品介绍</a>
+                                        <a href="javascript:;" :class="{selected:isSelected}" @click="isSelected=true">商品介绍</a>
                                     </li>
                                     <li>
-                                        <a href="javascript:;">商品评论</a>
+                                        <a href="javascript:;" :class="{selected:!isSelected}" @click="isSelected=false">商品评论</a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="tab-content entry" style="display: block;">
-                                内容
+                             </Affix>
+                            <div class="tab-content entry" v-show="isSelected" v-html="goodsInfo.content">
+                                
                             </div>
-                            <div class="tab-content" style="display: block;">
+                            <div class="tab-content"  v-show="!isSelected">
                                 <div class="comment-box">
                                     <div id="commentForm" name="commentForm" class="form-box">
                                         <div class="avatar-box">
@@ -157,7 +145,7 @@
                                             <a href="#/site/goodsinfo/90" class="">{{items.title}}</a>
                                             <span>{{items.add_time | filterDate}}</span>
                                         </div>
-                                    </li>  
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -165,31 +153,60 @@
                 </div>
             </div>
         </div>
+        <BackTop></BackTop>
     </div>
 </template>
 <script>
 import axios from 'axios';
+import { Loading } from "element-ui";
 export default {
-	name:'detail',
-	data:function () {
-		return {
-			productId:undefined,
-			goodsInfo:{},
-			hotList:[],
-			imgList:[]
-		}
-	},
-created(){
-	//获取Id
-	this.productId = this.$route.params.id;
-	//获取数据
-	axios.get(`http://47.106.148.205:8899/site/goods/getgoodsinfo/${this.productId}`)
-	.then(response=>{
-		this.goodsInfo = response.data.message.goodsinfo;
-		this.hotList = response.data.message.hotgoodslist;
-		this.imgList = response.data.message.imglist;
-	})
-}
+    name: 'detail',
+    data: function() {
+        return {
+            productId: undefined,
+            goodsInfo: {},
+            hotList: [],
+            imgList: [],
+            buyCount: '',
+            isSelected:true,
+
+        }
+    },
+    created() {
+    	//加载动画
+        const loading = this.$loading({
+            lock: true,
+            text: "Loading",
+            spinner: "el-icon-loading",
+            background: "rgba(0, 0, 0, 0.7)"
+        });
+        //获取Id
+        this.productId = this.$route.params.id;
+        //获取数据
+        axios.get(`http://47.106.148.205:8899/site/goods/getgoodsinfo/${this.productId}`)
+            .then(response => {
+                this.goodsInfo = response.data.message.goodsinfo;
+                this.hotList = response.data.message.hotgoodslist;
+                this.imgList = response.data.message.imglist;
+                 //关闭加载动画
+                let loadingInstance = Loading.service({ text: false });
+                this.$nextTick(() => {
+                    // 以服务的方式调用的 Loading 需要异步关闭 
+                    loadingInstance.close();
+                });
+            })
+    },
+    methods: {
+        handleChange(value) {
+            console.log(value);
+        }
+    }
 }
 </script>
-<style></style>
+<style>
+	.tab-content img{
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+</style>

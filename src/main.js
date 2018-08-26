@@ -11,6 +11,9 @@ import Detail from './components/detail.vue'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+//导入iview
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
 //导入moment.js
 import moment from 'moment';
 Vue.filter('filterDate',function (val) {
@@ -18,13 +21,18 @@ Vue.filter('filterDate',function (val) {
 })
 //注册VueRouter
 Vue.use(VueRouter);
-
+//注册element
 Vue.use(ElementUI);
+//注册iview
+Vue.use(VueRouter);
+Vue.use(iView);
 
 Vue.config.productionTip = false
 
 //定义路由规则
-let routes = [{
+let routes = [
+mode:'history';
+{
         //首页
         path: '/',
         // component: Index,
