@@ -105,7 +105,6 @@
     </div>
 </template>
 <script>
-import axios from "axios";
 import { Loading } from "element-ui";
 export default {
     name: "index",
@@ -126,16 +125,16 @@ export default {
             spinner: "el-icon-loading",
             background: "rgba(0, 0, 0, 0.7)"
         });
-        axios
-            .get("http://47.106.148.205:8899/site/goods/gettopdata/goods")
+        this.$axios
+            .get("/site/goods/gettopdata/goods")
             .then(response => {
                 this.cateList = response.data.message.catelist;
                 this.sliderList = response.data.message.sliderlist;
                 this.topList = response.data.message.toplist;
 
             });
-        axios
-            .get("http://47.106.148.205:8899/site/goods/getgoodsgroup")
+        this.$axios
+            .get("/site/goods/getgoodsgroup")
             .then(response => {
                 this.content = response.data.message;
                 //关闭加载动画
