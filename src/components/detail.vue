@@ -43,7 +43,7 @@
                                         <dt>购买数量</dt>
                                         <dd>
                                             <div class="stock-box">
-                                                <el-input-number v-model="buyCount" :min="0" :max="goodsInfo.stock_quantity" label="描述文字" size="small"></el-input-number>
+                                                <el-input-number v-model="buyCount" :min="1" :max="goodsInfo.stock_quantity" label="描述文字" size="small"></el-input-number>
                                             </div>
                                             <span class="stock-txt">
                                                 库存
@@ -204,6 +204,7 @@ export default {
                     })
                     // 临时数组 
                     this.images.normal_size = temArr;
+                     this.buyCount = 1;
                 });
         },
         //获取评论信息
@@ -252,9 +253,14 @@ export default {
             let addOffset = $('.add').offset();
             //获取购物车的位置
             let carTarget = $('.icon-cart').offset();
-            $('.moveImg').show().css(addOffset).animate(carTarget,1000,function(){
-                $(this).hide();
+            $('.moveImg').stop().show().addClass('move').css(addOffset).animate(carTarget,1000,function(){
+                $(this).hide().removeClass('move');
             })
+
+         this.$store.commit('addGoods',{
+            goodId:this.productId,
+            goodNum:this.buyCount
+         });
         }
 },
 watch: {
@@ -318,7 +324,7 @@ watch: {
     display: none;
 }
 .moveImg.move{
-    transition: 1s;
-    transform: scale(0);
+    transition: transform 1s;
+    transform: rotate(360deg) scale(.5);
 }
 </style>

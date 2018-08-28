@@ -23,15 +23,15 @@
                             <a>退出</a>
                             <strong>|</strong>
                         </span>
-                        <a href="" class="">
-                            <i class="iconfont icon-cart"></i>购物车(
-                            <span id="shoppingCartCount">
-                                <span>4</span>
-                            </span>)</a>
+                        <router-link to="/cart">
+                            <i class="iconfont icon-cart"></i>购物车
+                            (<span id="shoppingCartCount">
+                            <span>{{$store.getters.goodsCount}}</span>
+                            </span>)
+                        </router-link>
                     </div>
                 </div>
             </div>
-
             <!-- 2.0 导航条 -->
             <div class="head-nav">
                 <div class="section">
@@ -116,46 +116,46 @@
         </div>
     </div>
 </template>
-
 <script>
 export default {
-  name: "app"
+    name: "app"
 };
 import $ from "jquery";
 $(document).ready(function() {
-  $("#menu2 li a").wrapInner('<span class="out"></span>');
-  $("#menu2 li a").each(function() {
-    $('<span class="over">' + $(this).text() + "</span>").appendTo(this);
-  });
-  $("#menu2 li a").hover(
-    function() {
-      $(".out", this)
-        .stop()
-        .animate({ top: "48px" }, 300); // move down - hide
-      $(".over", this)
-        .stop()
-        .animate({ top: "0px" }, 300); // move down - show
-    },
-    function() {
-      $(".out", this)
-        .stop()
-        .animate({ top: "0px" }, 300); // move up - show
-      $(".over", this)
-        .stop()
-        .animate({ top: "-48px" }, 300); // move up - hide
-    }
-  );
+    $("#menu2 li a").wrapInner('<span class="out"></span>');
+    $("#menu2 li a").each(function() {
+        $('<span class="over">' + $(this).text() + "</span>").appendTo(this);
+    });
+    $("#menu2 li a").hover(
+        function() {
+            $(".out", this)
+                .stop()
+                .animate({ top: "48px" }, 300); // move down - hide
+            $(".over", this)
+                .stop()
+                .animate({ top: "0px" }, 300); // move down - show
+        },
+        function() {
+            $(".out", this)
+                .stop()
+                .animate({ top: "0px" }, 300); // move up - show
+            $(".over", this)
+                .stop()
+                .animate({ top: "-48px" }, 300); // move up - hide
+        }
+    );
 });
 </script>
- 
 <style>
 @import url("./assets/statics/site/css/style.css");
 
 @import url("./lib/css/style.css");
 #menu2 {
-  background-image: none;
+    background-image: none;
 }
-body{
-    background-color:#f0f3ef;
+
+body {
+    background-color: #f0f3ef;
 }
+
 </style>
