@@ -4,7 +4,9 @@ Vue.use(Vuex)
 //创建一个 stores
 const stores = new Vuex.Store({
     state: {
-        cartDate: JSON.parse(window.localStorage.getItem('goodkey')) || {}
+        cartDate: JSON.parse(window.localStorage.getItem('goodkey')) || {},
+        isLogin:false,
+        pathFrom:''
     },
     mutations: {
         // 传入的数据是一个对象 格式{goodId:商品id,goodNum:数量}
@@ -25,6 +27,12 @@ const stores = new Vuex.Store({
         deleteGood(state,goodId){
             //要调用Vue.delete方法
             Vue.delete(state.cartDate,goodId);
+        },
+        changeLoginStatus(state,isLogin){
+            state.isLogin = isLogin;
+        },
+        getPathFrom(state,pathFrom){
+            state.pathFrom = pathFrom;
         }
     },
     getters: {

@@ -11,21 +11,21 @@
                         <a target="_blank" href="#"></a>
                     </div>
                     <div id="menu" class="right-box">
-                        <span style="display: none;">
-                            <a href="" class="">登录</a>
+                        <span v-show="$store.state.isLogin == false">
+                           <router-link to="/login">登录</router-link>
                             <strong>|</strong>
                             <a href="" class="">注册</a>
                             <strong>|</strong>
                         </span>
-                        <span>
+                        <span v-show="$store.state.isLogin == true">
                             <a href="" class="">会员中心</a>
                             <strong>|</strong>
-                            <a>退出</a>
+                            <a @click="layout">退出</a>
                             <strong>|</strong>
                         </span>
                         <router-link to="/cart">
-                            <i class="iconfont icon-cart"></i>购物车
-                            (<span id="shoppingCartCount">
+                            <i class="iconfont icon-cart"></i>购物车 (
+                            <span id="shoppingCartCount">
                             <span>{{$store.getters.goodsCount}}</span>
                             </span>)
                         </router-link>
@@ -114,11 +114,32 @@
                 </div>
             </div>
         </div>
+        <Modal v-model="isShow" @on-ok="userExit">
+            <p>部分功能需要登录后才能操作,请确定退出!</p>
+        </Modal>
     </div>
 </template>
 <script>
 export default {
-    name: "app"
+    name: "app",
+    data: function() {
+        return {
+            isShow: false
+        }
+    },
+    methods: {
+        layout() {
+            this.isShow = true;
+        },
+        userExit() {
+            this.$axios.get('/site/account/logout').then(response => {
+               if (response.data.status == 0) {
+                 this.$router.push('/index');
+                 this.$store.state.isLogin = false;
+               }
+            })
+        }
+    }
 };
 import $ from "jquery";
 $(document).ready(function() {
@@ -157,5 +178,4 @@ $(document).ready(function() {
 body {
     background-color: #f0f3ef;
 }
-
 </style>

@@ -1,4 +1,4 @@
-<template>
+ <template>
     <div>
         <div class="section">
             <div class="location">
@@ -98,7 +98,7 @@
                     <div class="cart-foot clearfix">
                         <div class="right-box">
                             <button class="button" onclick="javascript:location.href='/index.html';">继续购物</button>
-                            <button class="submit" onclick="formSubmit(this, '/', '/shopping.html');">立即结算</button>
+                            <button class="submit" @click="Submit">立即结算</button>
                         </div>
                     </div>
                     <!--购物车底部-->
@@ -113,7 +113,7 @@ export default {
     name: "shoppingCart",
     data() {
         return {
-            message: []
+            message: [],
         }
     },
     //生命周期函数
@@ -165,7 +165,7 @@ export default {
         //同步购物车的数量
         numChange(num, id) {
             //调用仓库的方法
-            console.log(num,id)
+            console.log(num, id)
             this.$store.commit('updateGoodsNum', {
                 goodId: id,
                 goodNum: num
@@ -175,13 +175,29 @@ export default {
         delOne(id) {
             this.$store.commit('deleteGood', id);
             //删除后更新视图
-            this.message.forEach((val,index)=>{
-            	if (val.id == id) {
-            		this.message.splice(index,1);
-            	}
+            this.message.forEach((val, index) => {
+                if (val.id == id) {
+                    this.message.splice(index, 1);
+                }
             })
-        }
+        },
+        Submit() {
+            //判断是否有商品
+            if (this.totalPrice == 0) {
+                this.$Message.error('请先登录!');
+                return;
+            }
 
+            let ids = '';
+            this.message.forEach(v=>{
+                if (v.selected == true) {
+                    ids +=v.id;
+                    ids += ",";
+                }
+            })
+            ids = ids.slice(0, -1)
+            this.$router.push(`/order/${ids}`);
+        }
     }
 }
 </script>

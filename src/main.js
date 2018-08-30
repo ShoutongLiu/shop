@@ -15,6 +15,10 @@ import moment from 'moment';
 import axios from 'axios';
 //基础地址
 axios.defaults.baseURL = 'http://47.106.148.205:8899';
+//让ajax携带cookie
+// 跨域请求时 是否会携带 凭证(cookie)
+axios.defaults.withCredentials = true;
+//Vue原型对象存储axios
 Vue.prototype.$axios = axios;
 //转换时间
 Vue.filter('filterDate', function(val) {
@@ -30,11 +34,35 @@ Vue.use(ProductZoomer);
 Vue.config.productionTip = false
 
 //导入vuex文件
-import {store} from './vuex/store';
+import { store } from './vuex/store';
 import router from './router'
 
+// 增加 导航守卫(路由守卫),判断是否是登录状态,不是打回到登录
+router.beforeEach((to, from, next) => {
+	//保存from
+	store.commit('getPathFrom',from.path);
+    if (to.path.indexOf('/order/') != -1) {
+        axios.get("site/account/islogin")
+            .then(response => {
+                if (response.data.code != 'nologin') {
+                    next();
+                } else {
+                    next('/login');
+                }
+            })
+    } else {
+        next();
+    }
+})
 new Vue({
     render: h => h(App),
     router,
-    store
+    store,
+    beforeCreate(){
+    	axios.get('/site/account/islogin').then(response=>{
+    		if (response.data.code == 'logined') {
+    			store.state.isLogin = true;
+    		}
+    	})
+    }
 }).$mount('#app')
