@@ -14,6 +14,8 @@ import Login from '../components/login'
 
 import Order from '../components/order'
 
+import Pay from '../components/pay'
+
 //定义路由规则
 let routes = [{
         //首页
@@ -43,10 +45,22 @@ let routes = [{
     },
     {
         //订单
-        path: '/order',
-        component: Order
+        path: '/order/:id',
+        component: Order,
+        meta:{
+            checkLogin:true
+        }
+    },
+      {
+        //订单详情
+        path: '/pay/:id',
+        component: Pay,
+        meta:{
+            checkLogin:true
+        }
     },
 ]
 export default new Router({
+    mode:'history',
     routes,
 })

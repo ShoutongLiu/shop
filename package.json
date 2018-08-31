@@ -13,6 +13,7 @@
     "iview": "^3.0.1",
     "jquery": "^3.3.1",
     "moment": "^2.22.2",
+    "v-distpicker": "^1.0.17",
     "vue": "^2.5.17",
     "vue-concise-slider": "^2.4.9",
     "vue-router": "^3.0.1",

@@ -41,7 +41,7 @@ import router from './router'
 router.beforeEach((to, from, next) => {
 	//保存from
 	store.commit('getPathFrom',from.path);
-    if (to.path.indexOf('/order/') != -1) {
+    if (to.meta.checkLogin ==true) {
         axios.get("site/account/islogin")
             .then(response => {
                 if (response.data.code != 'nologin') {
