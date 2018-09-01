@@ -1,25 +1,21 @@
-# 在线购物商城
+# shop
 
-## 安装步骤(命令窗口执行)
-```
-git clone git@github.com:ShoutongLiu/shop.git
+> A Vue.js project
 
-cd shop
+## Build Setup
 
+``` bash
+# install dependencies
 npm install
-```
 
-### 开启项目服务
-```
-npm run serve
-```
+# serve with hot reload at localhost:8080
+npm run dev
 
-### 编译文件和压缩
-```
+# build for production with minification
 npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
 ```
 
-### 绑带和修复文件
-```
-npm run lint
-```
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
