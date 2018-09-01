@@ -10,13 +10,14 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@xkeshi/vue-qrcode": "^1.0.0",
     "axios": "^0.18.0",
     "element-ui": "^2.4.6",
     "iview": "^3.0.1",
     "jquery": "^3.3.1",
     "moment": "^2.22.2",
     "v-distpicker": "^1.0.17",
-    "vue": "^2.5.2",
+    "vue": "^2.5.17",
     "vue-concise-slider": "^2.5.1",
     "vue-product-zoomer": "^2.0.11",
     "vue-router": "^3.0.1",

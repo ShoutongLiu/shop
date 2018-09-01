@@ -15,6 +15,8 @@ import Login from '../components/login'
 import Order from '../components/order'
 
 import Pay from '../components/pay'
+import paySuccess from '../components/paySuccess'
+import VipCenter from '../components/vipCenter'
 
 //定义路由规则
 let routes = [{
@@ -55,6 +57,22 @@ let routes = [{
         //订单详情
         path: '/pay/:id',
         component: Pay,
+        meta:{
+            checkLogin:true
+        }
+    },
+    {
+        //订单成功
+        path: '/paySuccess',
+        component: paySuccess,
+        meta:{
+            checkLogin:true
+        }
+    },
+      {
+        //会员中心
+        path: '/vipCenter',
+        component: VipCenter,
         meta:{
             checkLogin:true
         }

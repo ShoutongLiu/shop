@@ -168,9 +168,8 @@ $(document).ready(function() {
 });
 </script>
 <style>
-@import url("./assets/statics/site/css/style.css");
-
-@import url("./lib/css/style.css");
+@import url("../static/css/style.css");
+@import url("../static/site/css/style.css");
 #menu2 {
     background-image: none;
 }
