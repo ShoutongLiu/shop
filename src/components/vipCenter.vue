@@ -15,12 +15,11 @@
                             <div class="bg-wrap">
                                 <div class="avatar-box">
                                     <a href="/user/center/avatar.html" class="img-box">
-                                        <i class="iconfont icon-user-full"></i>
+                                        <!-- <i class="iconfont icon-user-full"></i> -->
+                                        <img src="../../static/images/lst.jpg" alt="">
                                     </a>
                                     <h3>
-
-                                        ivanyb
-
+                                       小刘
                                     </h3>
                                     <p>
                                         <b>注册会员</b>
@@ -35,8 +34,9 @@
                                             </h2>
                                             <div class="list">
                                                 <p>
-                                                    <a href="#/site/member/orderlist" class="">
-                                                        <i class="iconfont icon-arrow-right"></i>交易订单</a>
+                                                <router-link to="/orderlist">
+                                                        <i class="iconfont icon-arrow-right"></i>交易订单
+                                                    </router-link>
                                                 </p>
                                             </div>
                                         </li>
@@ -79,14 +79,14 @@
                                 </div>
                                 <div class="center-head clearfix">
                                     <div class="img-box">
-                                        <i class="iconfont icon-user-full"></i>
+                                        <img src="../../static/images/lst.jpg" alt="">
                                     </div>
                                     <div class="list-box">
-                                        <h3>欢迎您~ ivanyb</h3>
+                                        <h3>欢迎您 小刘</h3>
                                         <ul>
                                             <li>组别：注册会员</li>
                                             <li>手机：13987654321</li>
-                                            <li>Email:ivanyb1@qq.com</li>
+                                            <li>Email:xiaoliu@qq.com</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -112,3 +112,16 @@
         </div>
     </div>
 </template>
+
+<script>
+    
+</script>
+
+<style lang='less'>
+    .avatar-box {
+        height: auto;
+    }
+    .center-head{
+        margin: 37px 22px 0;
+    }
+</style>

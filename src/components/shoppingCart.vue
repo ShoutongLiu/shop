@@ -1,5 +1,5 @@
  <template>
-    <div>
+    <div class="shoppingCart">
         <div class="section">
             <div class="location">
                 <span>当前位置：</span>
@@ -201,3 +201,9 @@ export default {
     }
 }
 </script>
+
+<style>
+    .wrapper{
+        min-height: 367px;
+    }
+</style>

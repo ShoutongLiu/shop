@@ -15,8 +15,14 @@ import Login from '../components/login'
 import Order from '../components/order'
 
 import Pay from '../components/pay'
+
 import paySuccess from '../components/paySuccess'
+
 import VipCenter from '../components/vipCenter'
+
+import OrderList from '../components/orderList'
+
+import OrderDetail from '../components/orderDetail'
 
 //定义路由规则
 let routes = [{
@@ -77,8 +83,24 @@ let routes = [{
             checkLogin:true
         }
     },
+    {
+        //订单列表
+        path: '/orderlist',
+        component: OrderList,
+        meta:{
+            checkLogin:true
+        }
+    },
+    {
+        //订单详情
+        path: '/orderDetail/:id',
+        component: OrderDetail,
+        meta:{
+            checkLogin:true
+        }
+    },
 ]
 export default new Router({
-    mode:'history',
+    // mode:'history',
     routes,
 })
