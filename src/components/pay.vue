@@ -114,10 +114,16 @@ export default {
             }, 500);
             clearInterval(interId)
           } else {
-            this.$Message.error('支付失败');
+           
           }
         });
     }, 1000)
+  },
+  methods: {
+    goPayOrder() {
+      window.open("http://47.106.148.205:8899/site/validate/pay/alipay/" +
+        this.$route.params.id);
+    }
   }
 }
 

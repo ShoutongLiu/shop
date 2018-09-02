@@ -306,10 +306,8 @@ export default {
   created(){
     //保存id
     this.orderForm.goodsids = this.$route.params.id;
-    console.log(this.orderForm.goodsids)
     this.$axios.get(`site/validate/order/getgoodslist/${this.$route.params.id}`)
     .then(response=>{
-        console.log(response)
         //定义总金额
         let total = 0;
         // 定义存储对象
@@ -317,7 +315,6 @@ export default {
         //因为后端接口没有提供购买商品的数量,要前端根据具体数值去拼接
         response.data.message.forEach(v=>{
             v.buycount = this.$store.state.cartDate[v.id];
-            console.log(v.buycount)
             v.totalamount = v.buycount * v.sell_price;
             //累加总金额
             total += v.totalamount;
