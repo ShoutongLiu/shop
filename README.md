@@ -27,24 +27,24 @@ npm run build --report
 ```
 
 │  index.html
-│  package.json   //依赖包文件
+│  package.json   
 │  README.md
 │  
 ├─build          
 │      
-├─config		//webpack配置文件目录
+├─config		
 │      
 ├─src
-│  │  App.vue	//入口文件
-│  │  main.js	//全局配置文件
+│  │  App.vue	
+│  │  main.js
 │  │  
-│  ├─components  //vue组件文件目录
+│  ├─components  
 │  │      
-│  ├─router		//路由文件目录
+│  ├─router		
 │  │      
-│  └─vuex		//状态管理文件目录
+│  └─vuex		
 │          
-└─static		//静态文件目录
+└─static	
 ```
 
 ## 实现功能
