@@ -30,21 +30,21 @@ npm run build --report
 │  package.json   
 │  README.md
 │  
-├─build          
+├─build      //webpack构建文件
 │      
-├─config		
+├─config	//webpack配置文件
 │      
 ├─src
-│  │  App.vue	
-│  │  main.js
+│  │  App.vue	//入口文件
+│  │  main.js	
 │  │  
-│  ├─components  
+│  ├─components  //组件文件
 │  │      
-│  ├─router		
+│  ├─router		//路由文件
 │  │      
-│  └─vuex		
+│  └─vuex		//全局状态管理文件
 │          
-└─static	
+└─static	//静态文件
 ```
 
 ## 实现功能
