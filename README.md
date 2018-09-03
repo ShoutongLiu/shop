@@ -77,5 +77,4 @@ npm run build --report
 
    ------
 
-
-觉得可以的请顺手给个小星星![img](file:///C:\Users\Mr.桐先生\AppData\Local\Temp\SGPicFaceTpBq\16820\1737167B.png)
+   觉得可以的请顺手给个小星星!
