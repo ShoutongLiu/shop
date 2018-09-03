@@ -57,9 +57,16 @@ export default {
                 password: this.password
             }).then(response => {
                 if (response.data.status == 1) {
-                    this.$Message.error(response.data.message)
+                    this.$Notice.error({
+                        title:'提示',
+                        desc:response.data.message
+                    });
                 } else {
-                    this.$router.push(this.$store.state.pathFrom);
+                    this.$Notice.success({
+                        title:'提示',
+                        desc:response.data.message
+                    })
+                    this.$router.go(-1);
                     this.$store.state.isLogin = true;
                 }
                 //   关闭进度条

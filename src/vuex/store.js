@@ -30,9 +30,6 @@ const stores = new Vuex.Store({
     },
     changeLoginStatus(state, isLogin) {
       state.isLogin = isLogin;
-    },
-    getPathFrom(state, pathFrom) {
-      state.pathFrom = pathFrom;
     }
   },
   getters: {

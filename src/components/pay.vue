@@ -110,7 +110,7 @@ export default {
           if (response.data.message[0].status == 2) {
             this.$Message.success('支付成功!');
             setTimeout(() => {
-              this.$router.push('/paySuccess');
+              this.$router.push('/paySuccess/'+this.$route.params.id);
             }, 500);
             clearInterval(interId)
           } else {

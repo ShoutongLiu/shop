@@ -82,7 +82,8 @@
                             <router-link :to="'./detail/'+itemGoods.artID">
                                 <a href="#/site/goodsinfo/87" class="">
                                     <div class="img-box">
-                                        <img :src="itemGoods.img_url">
+                                        <!-- 使用懒加载属性 -->
+                                        <img v-lazy="itemGoods.img_url">
                                     </div>
                                     <div class="info">
                                         <h3>{{itemGoods.artTitle}}</h3>
@@ -118,13 +119,13 @@ export default {
     },
 
     created() {
-        //加载动画
-        const loading = this.$loading({
-            lock: true,
-            text: "Loading",
-            spinner: "el-icon-loading",
-            background: "rgba(0, 0, 0, 0.7)"
-        });
+        // //加载动画
+        // const loading = this.$loading({
+        //     lock: true,
+        //     text: "Loading",
+        //     spinner: "el-icon-loading",
+        //     background: "rgba(0, 0, 0, 0.7)"
+        // });
         this.$axios
             .get("/site/goods/gettopdata/goods")
             .then(response => {
@@ -138,11 +139,11 @@ export default {
             .then(response => {
                 this.content = response.data.message;
                 //关闭加载动画
-                let loadingInstance = Loading.service({ text: false });
-                this.$nextTick(() => {
-                    // 以服务的方式调用的 Loading 需要异步关闭 
-                    loadingInstance.close();
-                });
+                // let loadingInstance = Loading.service({ text: false });
+                // this.$nextTick(() => {
+                //     // 以服务的方式调用的 Loading 需要异步关闭 
+                //     loadingInstance.close();
+                // });
             });
     }
 };

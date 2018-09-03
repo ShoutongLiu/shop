@@ -19,6 +19,7 @@
     "v-distpicker": "^1.0.17",
     "vue": "^2.5.17",
     "vue-concise-slider": "^2.5.1",
+    "vue-lazyload": "^1.2.6",
     "vue-product-zoomer": "^2.0.11",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
