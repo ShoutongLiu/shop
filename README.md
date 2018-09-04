@@ -75,4 +75,4 @@ npm run build --report
 
    ------
 
-   觉得可以的请顺手给个小星星!
+   顺手给个start激励一下!
